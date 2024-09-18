@@ -22,11 +22,13 @@ belongs(E,[E|_]) -> true;
 belongs(E,[_|T]) ->
     belongs(E,T).
 
-%Ejercicio 1.3.c
+%Ejercicio 1.3.d
 allequal([]) -> true;
-allequal([A,A]) -> true;
-allequal([A,B|_]) -> false;
-allequal([A,A|T]) -> allequal([A,T]).
+allequal([E]) -> true;
+allequal([E,E]) -> true;
+allequal([A,B]) -> false;
+allequal( [D|[D|T]]) -> allequal([D|T]);
+allequal( [D|[F|T]]) -> false.
 
 
 
