@@ -1,6 +1,9 @@
 -module(echo).
 -export([start/0, loop/0]).
 
+% P = echo:start().
+% P ! {self(), hola}.
+% erlang:process_info(self(),messages).
 
 start() ->
     spawn(echo, loop, []).
