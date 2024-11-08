@@ -94,5 +94,3 @@ kick_up([NV|[NH1|[NH2|_]]],[V|[H1|_]], I)  when V < I ->
     %Left
     io:format("d: ~w  ~w , ~w., ~w \n",[V, NV, NH1, NH2]),
     [{V,NV},H1,NH1,NH2].
-
-
