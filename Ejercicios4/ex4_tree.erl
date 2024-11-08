@@ -1,5 +1,5 @@
 -module(ex4_tree).
--export([insert/2]).
+-export([insert/2,tree_min/1,has_value/2,build_tree/1]).
 
 insert([[],[],[]],I) ->
     %Base Case
@@ -58,3 +58,31 @@ kick_up([NV|[NH1|[NH2]]],[V|[_|[H2]]],I) when V >= I ->
 kick_up([NV|[NH1|[NH2]]],[V|[H1|[_]]],I) when V < I ->
     %One value-Right
     [[{V,NV},H1,NH1,NH2],true].
+
+tree_min([V,[],[]]) ->
+    V;
+tree_min([_|[H1|[_|_]]]) ->
+    tree_min(H1).
+
+has_value([],_) ->
+    false;
+has_value([[]],_) ->
+    false;
+has_value([[V|[[]|[[]]]]],I) when not(V == I) ->
+    false;
+has_value([V|[_|[_]]],I) when V == I ->
+    true;
+has_value([{X,Y}|[_|[_|[_]]]],I) when (X == I) or (Y == I) ->
+    true;
+has_value([_|[H1|[H2]]],I)->
+    has_value(H1,I) or has_value(H2,I);
+has_value([{_,_}|[H1|[H2|H3]]],I)  ->
+    has_value(H1,I) or has_value(H2,I) or has_value(H3,I).
+
+build_tree(L) ->
+    build_tree(L,[]).
+build_tree([],L) ->
+    L;
+build_tree([H|T],L) ->
+    [V,_] = insert(L,H),
+    build_tree(T,V).
