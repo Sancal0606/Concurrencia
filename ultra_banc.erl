@@ -1,5 +1,5 @@
--module(ultra_bank).
--export([]).
+-module(ultra_banc).
+-export([start/1, do_ub/2]).
 -compile([export_all]).
 
 %Starts an ultrabank
