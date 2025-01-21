@@ -7,12 +7,10 @@ fahr_cels(C) ->
 first_three([H|[H2|[H3|_]]]) ->
     [H,H2,H3].
 
-list_size(L)->
-    list_size(L,0).
-list_size([],X) ->
-    X;
-list_size([_|T],X) ->
-    list_size(T,X+1).
+list_size([]) ->
+    0;
+list_size([_|T]) ->
+    1 + list_size(T).
 
 list_sum([],X) ->
     X;
@@ -55,6 +53,8 @@ sum_square(A,A) ->
 sum_square(A,B) ->
     (A * A) + sum_square(A+1,B).
 
+pow(_,0) ->
+    1;
 pow(X,1) ->
     X;
 pow(X,Y) when Y rem 2 == 1->

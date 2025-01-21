@@ -9,7 +9,6 @@ do_op(D) ->
         {From,consulta} -> 
             timer:sleep(esperar()),
             From ! D,
-            term(),
             do_op(D);
         {From, ingreso, Q} ->
             timer:sleep(esperar()),
